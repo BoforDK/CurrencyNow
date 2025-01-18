@@ -18,5 +18,7 @@ let project = Project(
         
         currencyList,
         currencyListTests,
+        
+        exchangeRateDetail,
     ]
 )

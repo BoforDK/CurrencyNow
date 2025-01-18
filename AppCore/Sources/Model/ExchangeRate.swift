@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ExchangeRate: Equatable {
+public struct ExchangeRate: Equatable, Hashable {
     public let country: String
     public let name: String
     public let currencyCode: CurrencyCode

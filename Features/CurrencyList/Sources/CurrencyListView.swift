@@ -29,10 +29,15 @@ public struct CurrencyListView: View {
                     ForEach(store.exchangeRates, id: \.currencyCode) { exchangeRate in
                         ExchangeRateItem(
                             exchangeRate: exchangeRate,
-                            comparedCurrency: store.selectedCurrencyCode
+                            referenceCurrency: store.selectedCurrencyCode,
+                            amount: \.cnbMid,
+                            action: {
+                                store.send(.view(.goToDetail(exchangeRate)))
+                            }
                         )
                     }
                 }
+                .padding(10)
             }
             .toolbar {
                 ToolbarItem {

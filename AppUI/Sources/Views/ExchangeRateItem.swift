@@ -10,39 +10,50 @@ import AppCore
 
 public struct ExchangeRateItem: View {
     let exchangeRate: ExchangeRate
-    let comparedCurrency: CurrencyCode?
+    let referenceCurrency: CurrencyCode?
+    let amount: KeyPath<ExchangeRate, Double>
+    let action: () -> Void
 
     public init(
         exchangeRate: ExchangeRate,
-        comparedCurrency: CurrencyCode?
+        referenceCurrency: CurrencyCode?,
+        amount: KeyPath<ExchangeRate, Double>,
+        action: @escaping () -> Void
     ) {
         self.exchangeRate = exchangeRate
-        self.comparedCurrency = comparedCurrency
+        self.referenceCurrency = referenceCurrency
+        self.amount = amount
+        self.action = action
     }
 
     public var body: some View {
+        Button(action: action) {
+            label
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var label: some View {
         HStack {
             VStack {
                 compareItem(
                     lhs: exchangeRate.currencyCode.value,
-                    rhs: comparedCurrency?.value ?? "-"
+                    rhs: referenceCurrency?.value ?? "-"
                 )
 
                 compareItem(
                     lhs: exchangeRate.currencyCode.flag,
-                    rhs: comparedCurrency?.value.flag ?? "-"
+                    rhs: referenceCurrency?.value.flag ?? "-"
                 )
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack {
-                amountItem(exchangeRate.currMid)
+                amountItem(exchangeRate[keyPath: amount])
 
                 moveItem(exchangeRate.move)
             }
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 10)
     }
 
     private func compareItem(lhs: String, rhs: String) -> some View {
@@ -84,7 +95,9 @@ public struct ExchangeRateItem: View {
 #Preview {
     ExchangeRateItem(
         exchangeRate: .mock(),
-        comparedCurrency: .mock()
+        referenceCurrency: .mock(),
+        amount: \.cnbMid,
+        action: {}
     )
 }
 #endif
