@@ -8,7 +8,7 @@
 import SwiftUI
 import AppCore
 import ComposableArchitecture
-import CurrencyList
+import ExchangeRateList
 import ExchangeRateDetail
 
 struct RootFlowDelegate: View {
@@ -18,10 +18,10 @@ struct RootFlowDelegate: View {
 
     var body: some View {
         NavigationStack(path: $store.screens) {
-            CurrencyListView(
+            ExchangeRateListView(
                 store: store.scope(
-                    state: \.currencyList,
-                    action: \.currencyListAction
+                    state: \.exchangeRateList,
+                    action: \.exchangeRateListAction
                 )
             )
             .navigationDestination(for: RootFlowDelegateScreen.self) { screen in

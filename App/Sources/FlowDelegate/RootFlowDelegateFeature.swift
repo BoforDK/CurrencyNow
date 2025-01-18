@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 import AppCore
-import CurrencyList
+import ExchangeRateList
 
 @Reducer
 struct RootFlowDelegateFeature {
@@ -17,13 +17,13 @@ struct RootFlowDelegateFeature {
     struct State: Equatable {
         var screens: NavigationPath = .init()
 
-        var currencyList: CurrencyListFeature.State = .init()
+        var exchangeRateList: ExchangeRateListFeature.State = .init()
     }
 
     enum Action: BindableAction {
         case binding(BindingAction<State>)
 
-        case currencyListAction(CurrencyListFeature.Action)
+        case exchangeRateListAction(ExchangeRateListFeature.Action)
 
         case goToDetail(ExchangeRate, CurrencyCode)
     }
@@ -34,9 +34,9 @@ struct RootFlowDelegateFeature {
         Reduce(mainReducer)
 
         Scope(
-            state: \.currencyList,
-            action: \.currencyListAction,
-            child: CurrencyListFeature.init
+            state: \.exchangeRateList,
+            action: \.exchangeRateListAction,
+            child: ExchangeRateListFeature.init
         )
     }
 
@@ -45,7 +45,7 @@ struct RootFlowDelegateFeature {
         case .binding:
             return .none
 
-        case let .currencyListAction(action):
+        case let .exchangeRateListAction(action):
             switch action {
             case let .delegate(delegateAction):
                 switch delegateAction{
