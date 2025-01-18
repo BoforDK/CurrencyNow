@@ -13,7 +13,7 @@ extension ExchangeRate {
         name: String = "frank",
         currencyCode: String = "CHF",
         amount: Double = 1,
-        //todo
+        // TODO: Add mock
         validFrom: Date? = nil,
         valBuy: Double = 21,
         valSell: Double = 21.5,
