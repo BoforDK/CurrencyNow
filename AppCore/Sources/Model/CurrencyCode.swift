@@ -7,10 +7,14 @@
 
 import Foundation
 
-public struct CurrencyCode: Equatable {
+public struct CurrencyCode: Equatable, Hashable {
     public let value: String
 
     public init(value: String) {
         self.value = value
+    }
+
+    public var flag: String {
+        value.flag
     }
 }
