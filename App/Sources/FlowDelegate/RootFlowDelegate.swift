@@ -9,6 +9,7 @@ import SwiftUI
 import AppCore
 import ComposableArchitecture
 import CurrencyList
+import ExchangeRateDetail
 
 struct RootFlowDelegate: View {
     typealias Action = RootFlowDelegateFeature.Action
@@ -25,8 +26,16 @@ struct RootFlowDelegate: View {
             )
             .navigationDestination(for: RootFlowDelegateScreen.self) { screen in
                 switch screen {
-                case .detail:
-                    Text("Detail")
+                case let .detail(exchangeRate, currencyCode):
+                    ExchangeRateDetailView(
+                        store: .init(
+                            initialState: .init(
+                                exchangeRate: exchangeRate,
+                                referenceCurrency: currencyCode
+                            ),
+                            reducer: ExchangeRateDetailFeature.init
+                        )
+                    )
                 }
             }
         }

@@ -25,7 +25,7 @@ struct RootFlowDelegateFeature {
 
         case currencyListAction(CurrencyListFeature.Action)
 
-        case goToDetail
+        case goToDetail(ExchangeRate, CurrencyCode)
     }
 
     var body: some Reducer<State, Action> {
@@ -49,15 +49,17 @@ struct RootFlowDelegateFeature {
             switch action {
             case let .delegate(delegateAction):
                 switch delegateAction{
-                case .goToDetail:
-                    return .send(.goToDetail)
+                case let .goToDetail(exchangeRate, selectedCurrency):
+                    return .send(.goToDetail(exchangeRate, selectedCurrency))
                 }
             default:
                 return .none
             }
 
-        case .goToDetail:
-            state.screens.append(RootFlowDelegateScreen.detail)
+        case let .goToDetail(exchangeRate, selectedCurrency):
+            state.screens.append(
+                RootFlowDelegateScreen.detail(exchangeRate, selectedCurrency)
+            )
 
             return .none
         }
