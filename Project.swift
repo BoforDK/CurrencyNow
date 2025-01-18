@@ -16,8 +16,8 @@ let project = Project(
         appUITests,
         appDependencies,
         
-        currencyList,
-        currencyListTests,
+        exchangeRateList,
+        exchangeRateListTests,
         
         exchangeRateDetail,
     ]

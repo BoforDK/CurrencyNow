@@ -22,7 +22,7 @@ public let app: Target = .target(
         .target(appCore),
         .target(appUI),
         
-        .target(currencyList),
+        .target(exchangeRateList),
         .target(exchangeRateDetail),
     ],
     settings: .settings(
