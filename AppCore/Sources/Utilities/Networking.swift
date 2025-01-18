@@ -23,14 +23,20 @@ extension Networking {
 
 public class Network: Networking {
     private var session: URLSession
+    private var apiKey: String
 
-    public init(session: URLSession = .shared) {
+    public init(
+        session: URLSession = .shared,
+        apiKey: String
+    ) {
         self.session = session
+        self.apiKey = apiKey
     }
 
     public func sendGetRequest<T: Decodable>(type: T.Type, url: URL) async throws -> T {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue(Environment.apiKey, forHTTPHeaderField: "WEB-API-key")
 
         return try await sendRequest(request)
     }

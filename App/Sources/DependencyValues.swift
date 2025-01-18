@@ -7,5 +7,5 @@
 
 import AppCore
 
-private let network: Networking = Network()
+private let network: Networking = Network(apiKey: Environment.apiKey)
 
