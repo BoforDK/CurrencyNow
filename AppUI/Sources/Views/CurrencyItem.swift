@@ -34,8 +34,10 @@ public struct CurrencyItem: View {
                 Text(currency.currencyCode.value)
             }
         }
+        .padding(5)
+        .background(Color.gray.opacity(0.1))
+        .cornerRadius(10)
         .buttonStyle(.plain)
-        .padding()
     }
 }
 
