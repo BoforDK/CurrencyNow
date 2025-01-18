@@ -16,6 +16,9 @@ public let appCore = Target.target(
     bundleId: bundleID,
     infoPlist: .default,
     sources: .sourceFilesList(globs: sources),
+    resources: [
+        "\(targetName)/Environment/\(Environment.current)/**"
+    ],
     entitlements: nil,
     scripts: [
         .post(

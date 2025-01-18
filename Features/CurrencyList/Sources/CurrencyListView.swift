@@ -1,6 +1,6 @@
 //
 //  CurrencyListView.swift
-//  CurrencyNow
+//  CurrencyList
 //
 //  Created by Alexander Grigorov on 18.01.2025.
 //
