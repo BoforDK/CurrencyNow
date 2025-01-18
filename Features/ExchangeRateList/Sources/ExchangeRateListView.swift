@@ -1,6 +1,6 @@
 //
-//  CurrencyListView.swift
-//  CurrencyList
+//  ExchangeRateListView.swift
+//  ExchangeRateList
 //
 //  Created by Alexander Grigorov on 18.01.2025.
 //
@@ -10,14 +10,14 @@ import ComposableArchitecture
 import AppCore
 import AppUI
 
-@ViewAction(for: CurrencyListFeature)
-public struct CurrencyListView: View {
-    @Bindable private var store: StoreOf<CurrencyListFeature>
+@ViewAction(for: ExchangeRateListFeature)
+public struct ExchangeRateListView: View {
+    @Bindable private var store: StoreOf<ExchangeRateListFeature>
     
     @ScaledMetric(relativeTo: .body) var toolBarIconSize: CGFloat = 15
     
     public init(
-        store: StoreOf<CurrencyListFeature>
+        store: StoreOf<ExchangeRateListFeature>
     ) {
         self.store = store
     }
@@ -87,7 +87,7 @@ public struct CurrencyListView: View {
 
 #if DEBUG
 #Preview {
-    CurrencyListView(
+    ExchangeRateListView(
         store: .init(
             initialState: .init(
                 screenState: .loaded,

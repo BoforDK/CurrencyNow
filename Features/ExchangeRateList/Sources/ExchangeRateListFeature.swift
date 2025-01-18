@@ -1,6 +1,6 @@
 //
-//  CurrencyListFeature.swift
-//  CurrencyList
+//  ExchangeRateListFeature.swift
+//  ExchangeRateList
 //
 //  Created by Alexander Grigorov on 18.01.2025.
 //
@@ -11,7 +11,7 @@ import AppCore
 import AppDependencies
 
 @Reducer
-public struct CurrencyListFeature {
+public struct ExchangeRateListFeature {
     @Dependency(\.exchangeRateClient) var exchangeRateClient
     
     public init() {}
