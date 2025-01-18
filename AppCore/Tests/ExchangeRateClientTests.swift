@@ -1,5 +1,5 @@
 //
-//  CurrencyApiHandlerTests.swift
+//  ExchangeRateClientTests.swift
 //  AppCore
 //
 //  Created by Alexander Grigorov on 18.01.2025.
@@ -9,9 +9,9 @@ import XCTest
 
 @testable import AppCore
 
-final class CurrencyApiHandlerTests: XCTestCase {
+final class ExchangeRateClientTests: XCTestCase {
     var networkMock: NetworkFake!
-    var currencyApiHandler: CurrencyApiHandler!
+    var exchangeRateClient: ExchangeRateClient!
 
     override func setUp() {
         super.setUp()
@@ -19,7 +19,7 @@ final class CurrencyApiHandlerTests: XCTestCase {
 
     override func tearDown() {
         networkMock = nil
-        currencyApiHandler = nil
+        exchangeRateClient = nil
         super.tearDown()
     }
 
@@ -35,13 +35,13 @@ final class CurrencyApiHandlerTests: XCTestCase {
 
             return .success(mockData)
         }
-        currencyApiHandler = CurrencyApiHandler(
+        exchangeRateClient = ExchangeRateClient(
             network: networkMock,
             language: .en
         )
 
         // When
-        let _ = try await currencyApiHandler.allCurrencies()
+        let _ = try await exchangeRateClient.allCurrencies()
 
         // Then
         XCTAssertEqual(expectedURL, apiUrl)
@@ -57,10 +57,10 @@ final class CurrencyApiHandlerTests: XCTestCase {
         networkMock = NetworkFake { _, url in
             return .success(mockData)
         }
-        currencyApiHandler = CurrencyApiHandler(network: networkMock)
+        exchangeRateClient = ExchangeRateClient(network: networkMock)
 
         // When
-        let result = try await currencyApiHandler.allCurrencies()
+        let result = try await exchangeRateClient.allCurrencies()
 
         // Then
         XCTAssertEqual(result.count, 1)
@@ -75,11 +75,11 @@ final class CurrencyApiHandlerTests: XCTestCase {
         networkMock = NetworkFake { _, _ in
             return .failure(RequestError.incorrectURL)
         }
-        currencyApiHandler = CurrencyApiHandler(network: networkMock, language: .en)
+        exchangeRateClient = ExchangeRateClient(network: networkMock, language: .en)
 
         // When/Then
         do {
-            let _ = try await currencyApiHandler.allCurrencies()
+            let _ = try await exchangeRateClient.allCurrencies()
             XCTFail("Shouldn't be called")
         } catch RequestError.incorrectURL {
         } catch {

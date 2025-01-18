@@ -10,15 +10,15 @@ import AppCore
 
 private let network: Networking = Network(apiKey: Environment.apiKey)
 
-enum CurrencyApiHandlerKey: DependencyKey {
-    static let liveValue: CurrencyApiHandlerProtocol = CurrencyApiHandler(
+enum ExchangeRateClientKey: DependencyKey {
+    static let liveValue: ExchangeRateClientProtocol = ExchangeRateClient(
         network: network
     )
 }
 
 public extension DependencyValues {
-    var currencyApiHandler: CurrencyApiHandlerProtocol {
-        get { self[CurrencyApiHandlerKey.self] }
-        set { self[CurrencyApiHandlerKey.self] = newValue }
+    var exchangeRateClient: ExchangeRateClientProtocol {
+        get { self[ExchangeRateClientKey.self] }
+        set { self[ExchangeRateClientKey.self] = newValue }
     }
 }

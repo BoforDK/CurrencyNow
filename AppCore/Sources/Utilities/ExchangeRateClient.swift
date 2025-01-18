@@ -1,5 +1,5 @@
 //
-//  CurrencyApiHandler.swift
+//  ExchangeRateClient.swift
 //  CurrencyNow
 //
 //  Created by Alexander Grigorov on 18.01.2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol CurrencyApiHandlerProtocol {
+public protocol ExchangeRateClientProtocol {
     func allCurrencies() async throws -> [Currency]
 
     func exchangeRates(
@@ -19,7 +19,7 @@ public protocol CurrencyApiHandlerProtocol {
 
 // MARK: - APIHandler
 
-public class CurrencyApiHandler: CurrencyApiHandlerProtocol {
+public class ExchangeRateClient: ExchangeRateClientProtocol {
 
     private let network: Networking
     private let language: ApiLanguage
