@@ -13,7 +13,6 @@ let project = Project(
         appCore,
         appCoreTests,
         appUI,
-        appUITests,
         appDependencies,
         
         exchangeRateList,
