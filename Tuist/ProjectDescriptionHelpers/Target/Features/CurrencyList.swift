@@ -15,8 +15,9 @@ public let currencyList: Target = .target(
     infoPlist: .default,
     sources: .sourceFilesList(globs: sources),
     dependencies: [
-        .target(appCore),
         .target(appUI),
+        .target(appCore),
+        .target(appDependencies),
     ]
 )
 

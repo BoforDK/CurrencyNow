@@ -14,6 +14,7 @@ let project = Project(
         appCoreTests,
         appUI,
         appUITests,
+        appDependencies,
         
         currencyList,
         currencyListTests,
