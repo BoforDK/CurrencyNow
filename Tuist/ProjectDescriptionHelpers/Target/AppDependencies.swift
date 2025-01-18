@@ -1,7 +1,7 @@
 import ProjectDescription
 
 private let targetName = "AppDependencies"
-private let bundleID = "\(AppSetup.current.moduleBundleIDPrefix).ui"
+private let bundleID = "\(AppSetup.current.moduleBundleIDPrefix).dependencies"
 private let sources: [SourceFileGlob] = [
     "\(targetName)/Sources/**",
     Configuration.current == .debug ? "\(targetName)/Testing/**" : nil,
