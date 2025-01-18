@@ -18,20 +18,3 @@ public let appUI = Target.target(
         .target(appCore),
     ]
 )
-
-public let appUITests: Target = .target(
-    name: "\(targetName)Tests",
-    destinations: [.iPhone, .iPad],
-    product: .unitTests,
-    bundleId: "\(bundleID).tests",
-    infoPlist: .default,
-    sources: ["\(targetName)/Tests/**"],
-    resources: [],
-    dependencies: [
-        .xctest,
-        .target(appUI),
-        .snapshotTesting,
-    ]
-)
-
-
