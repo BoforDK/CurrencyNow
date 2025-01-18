@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apiKey</key>
+	<string>e4bc1a25-8f98-4998-a692-6113da7552df</string>
+	<key>apiURL</key>
+	<string>https://webapi.developers.erstegroup.com/api/csas/public/sandbox/v2/rates/</string>
+</dict>
+</plist>
