@@ -12,7 +12,7 @@ struct ApiExchangeRateMapper {
 
     func map(apiExchangeRate: ApiExchangeRate) -> ExchangeRate {
         let validFrom = DateFormatters
-            .dateWithTime
+            .apiDateWithTime
             .date(from: apiExchangeRate.validFrom)
 
         return ExchangeRate(

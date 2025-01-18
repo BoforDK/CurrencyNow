@@ -71,14 +71,14 @@ public struct CurrencyListFeature {
         public enum Alert: Equatable, Sendable {}
 
         @CasePathable
-        public enum View: BindableAction, Sendable {
+        public enum View: BindableAction {
             case binding(BindingAction<State>)
-            case goToDetail
+            case goToDetail(ExchangeRate)
         }
         
         case delegate(Delegate)
         public enum Delegate {
-            case goToDetail
+            case goToDetail(ExchangeRate, CurrencyCode)
         }
     }
 
@@ -173,8 +173,16 @@ public struct CurrencyListFeature {
             case .binding:
                 return .none
                 
-            case .goToDetail:
-                return .send(.delegate(.goToDetail))
+            case let .goToDetail(exchangeRate):
+                guard let selectedCurrencyCode = state.selectedCurrencyCode else {
+                    return .none
+                }
+                
+                return .send(
+                    .delegate(
+                        .goToDetail(exchangeRate, selectedCurrencyCode)
+                    )
+                )
             }
             
         case .delegate:
