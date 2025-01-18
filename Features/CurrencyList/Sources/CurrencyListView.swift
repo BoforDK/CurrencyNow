@@ -68,6 +68,7 @@ public struct CurrencyListView: View {
                     )
                 }
             }
+            .padding(10)
         }
         .interactiveDismissDisabled(store.interactiveCurrencySheetDismissDisabled)
     }
