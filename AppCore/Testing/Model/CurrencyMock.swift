@@ -6,7 +6,7 @@
 //
 
 extension Currency {
-    static func mock(
+    public static func mock(
         country: String = "EU",
         name: String = "euro",
         currencyCode: String = "EUR",
@@ -22,7 +22,7 @@ extension Currency {
 }
 
 extension [Currency] {
-    static var mock: [Currency] {
+    public static var mock: [Currency] {
         [
             .mock(),
             .mock(

@@ -5,9 +5,9 @@
 //  Created by Alexander Grigorov on 18.01.2025.
 //
 
-public struct Currency {
-    let country: String
-    let name: String
-    let currencyCode: CurrencyCode
-    let longName: String
+public struct Currency: Equatable {
+    public let country: String
+    public let name: String
+    public let currencyCode: CurrencyCode
+    public let longName: String
 }
