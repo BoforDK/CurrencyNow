@@ -54,6 +54,9 @@ public struct ExchangeRateItem: View {
                 moveItem(exchangeRate.move)
             }
         }
+        .padding(5)
+        .background(Color.gray.opacity(0.1))
+        .cornerRadius(10)
     }
 
     private func compareItem(lhs: String, rhs: String) -> some View {
