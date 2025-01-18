@@ -1,6 +1,6 @@
 //
 //  ScreenStateModifier.swift
-//  AppCore
+//  AppUI
 //
 //  Created by Alexander Grigorov on 18.01.2025.
 //
